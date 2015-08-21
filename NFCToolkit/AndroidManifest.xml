@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.heru.omatoolkit"
+    android:versionCode="4"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="21" />
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
+    
+    <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD"/>
+	<uses-permission android:name="android.permission.NFC" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+	<uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+	<uses-permission android:name="android.permission.SIM_COMMUNICATION" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+	
+     <permission android:name="com.morpho.omatoolkit.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.morpho.omatoolkit.permission.C2D_MESSAGE" />
+    
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        
+          <uses-library
+            android:name="org.simalliance.openmobileapi"
+            android:required="false" />
+        
+        <activity
+            android:name="com.heru.omatoolkit.MainActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/filter_nfc" />
+        </activity>
+        
+        <activity
+            android:name="com.heru.omatoolkit.ViewActivity"
+            android:label="@string/app_name"
+            android:priority='1'
+            android:screenOrientation="portrait">
+            
+            <intent-filter android:priority='1'>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+    			<data android:scheme="http" />
+            	<data android:host="*" />
+            	<data android:mimeType="*/*" />
+            	<data android:pathPattern=".*\\.hp" />
+            </intent-filter>
+            
+            <intent-filter android:priority='1'>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+    			<data android:scheme="https" />
+            	<data android:host="*" />
+            	<data android:mimeType="*/*" />
+            	<data android:pathPattern=".*\\.hp" />
+            </intent-filter>
+            
+            <intent-filter android:priority='1'>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+    			<data android:scheme="ftp" />
+            	<data android:host="*" />
+            	<data android:mimeType="*/*" />
+            	<data android:pathPattern=".*\\.hp" />
+            </intent-filter>
+            
+            <intent-filter android:priority='1'>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" /> 
+    			<action android:name="android.intent.action.PICK" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+    			<data android:scheme="file" />
+            	<data android:host="*" />
+            	<data android:mimeType="*/*" />
+            	<data android:pathPattern=".*\\.hp" />
+            </intent-filter>
+            
+            <intent-filter android:priority='1'>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" /> 
+    			<action android:name="android.intent.action.PICK" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            	<data android:scheme="content" />
+            	<data android:host="*" />
+            	<data android:mimeType="*/*" />
+            	<data android:pathPattern=".*\\.hp" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="com.heru.omatoolkit.HelpActivity" android:screenOrientation="portrait"></activity>
+        
+        <receiver
+        	android:name="com.heru.omatoolkit.receivers.GcmBroadcastReceiver"
+			android:permission="com.google.android.c2dm.permission.SEND" >
+			<intent-filter>
+				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+			</intent-filter>
+		</receiver>
+		<service android:name="com.heru.omatoolkit.services.GcmIntentService" />
+    </application>
+
+</manifest>

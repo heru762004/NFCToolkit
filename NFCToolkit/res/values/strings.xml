@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NFCToolkit</string>
+    <string name="action_channel_ese">Reader : eSE</string>
+    <string name="action_channel_sim">Reader : SIM</string>
+    <string name="action_channel_df">Reader : DF</string>
+    <string name="action_channel_iso">Reader : IsoDep</string>
+    <string name="action_channel_oti">Reader : OTI</string>
+    <string name="action_channel_sim_tm">Reader : SIM-TM</string>
+    <string name="action_basic_channel">Channel : Basic</string>
+    <string name="action_logical_channel">Channel : Logical</string>
+    
+    <string name="channel_ese">eSE</string>
+    <string name="channel_sim">SIM</string>
+    <string name="channel_df">Device Fidelity</string>
+    <string name="channel_iso">Iso Dep</string>
+    <string name="channel_oti">OTI</string>
+    <string name="channel_sim_tm">SIM Telephony Manager</string>
+    
+    <string name="action_run_script">Run from Script</string>
+    <string name="action_save_log_on">Save Log Mode : ON</string>
+    <string name="action_save_log_off">Save Log Mode : OFF</string>
+    <string name="action_send_log">Send Log</string>
+    <string name="action_connect_to_oma">Reg GCM ID to OMA Server</string>
+    <string name="action_help">Help</string>
+    <string name="aid_title">AID</string>
+	<string name="command_title">Command</string>
+	<string name="run_title">Run</string>
+</resources>
